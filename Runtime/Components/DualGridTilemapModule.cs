@@ -33,6 +33,9 @@ namespace skner.DualGrid
         private GameObjectOrigin _gameObjectOrigin = GameObjectOrigin.None;
         public GameObjectOrigin GameObjectOrigin { get => _gameObjectOrigin; internal set => _gameObjectOrigin = value; }
 
+        [SerializeField]
+        private bool setEmptyNull = false;
+
         private Tilemap _dataTilemap;
         public Tilemap DataTilemap
         {
@@ -125,7 +128,10 @@ namespace skner.DualGrid
                 }
                 else
                 {
-                    UnsetRenderTile(renderTilePosition);
+                    if (setEmptyNull)
+                        UnsetRenderTile(renderTilePosition);
+                    else
+                        SetRenderTile(renderTilePosition);
                 }
             }
         }
@@ -144,7 +150,7 @@ namespace skner.DualGrid
 
         private void UnsetRenderTile(Vector3Int renderTilePosition)
         {
-            if (RenderTilemap.HasTile(renderTilePosition) && !IsInUseByDataTilemap(renderTilePosition))
+            if (RenderTilemap.HasTile(renderTilePosition) && !IsInUseByDataTilemap(renderTilePosition) && setEmptyNull)
             {
                 RenderTilemap.SetTile(renderTilePosition, null);
             }
