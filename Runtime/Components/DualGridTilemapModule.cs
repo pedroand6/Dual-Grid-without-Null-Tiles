@@ -35,6 +35,7 @@ namespace skner.DualGrid
 
         [SerializeField]
         private bool setEmptyNull = false;
+        public bool SetEmptyNull { get => setEmptyNull; internal set => setEmptyNull = value; }
 
         private Tilemap _dataTilemap;
         public Tilemap DataTilemap
