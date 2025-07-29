@@ -23,6 +23,8 @@ namespace skner.DualGrid
         private DualGridRuleTile _renderTile;
         public DualGridRuleTile RenderTile { get => _renderTile; internal set => _renderTile = value; }
 
+        [SerializeField] public bool setEmptyNull = false;
+
         public DualGridDataTile DataTile => RenderTile.DataTile;
 
         [SerializeField]
@@ -32,10 +34,6 @@ namespace skner.DualGrid
         [SerializeField]
         private GameObjectOrigin _gameObjectOrigin = GameObjectOrigin.None;
         public GameObjectOrigin GameObjectOrigin { get => _gameObjectOrigin; internal set => _gameObjectOrigin = value; }
-
-        [SerializeField]
-        private bool setEmptyNull = false;
-        public bool SetEmptyNull { get => setEmptyNull; internal set => setEmptyNull = value; }
 
         private Tilemap _dataTilemap;
         public Tilemap DataTilemap
